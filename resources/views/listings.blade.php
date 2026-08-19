@@ -1,24 +1,28 @@
-<?php echo $heading ?? 'Listings'; ?>
+@extends('layout')
 
-<?php foreach($listings ?? [] as $listing): ?>
-<h2><?php echo $listing['title']; ?></h2>
-<p><?php echo $listing['description']; ?></p>
-<?php endforeach; ?>
+@section('content')
+    <?php echo $heading ?? 'Listings'; ?>
 
-@php
-    $test = 1;
-@endphp
+    <?php foreach($listings ?? [] as $listing): ?>
+    <h2><?php echo $listing['title']; ?></h2>
+    <p><?php echo $listing['description']; ?></p>
+    <?php endforeach; ?>
 
-@if (count($listings) == 0)
-    <p>No listings found</p>
-@else
-    <h1>{{ $heading }}</h1>
-    <span>{{ $test }}</span>
+    @php
+        $test = 1;
+    @endphp
 
-    @foreach ($listings as $listing)
-        <a href="/listings/{{ $listing['id'] }}">
-            <h2>{{ $listing['title'] }}</h2>
-            <p>{{ $listing['description'] }}</p>
-        </a>
-    @endforeach
-@endif
+    @if (count($listings) == 0)
+        <p>No listings found</p>
+    @else
+        <h1>{{ $heading }}</h1>
+        <span>{{ $test }}</span>
+
+        @foreach ($listings as $listing)
+            <a href="/listings/{{ $listing['id'] }}">
+                <h2>{{ $listing['title'] }}</h2>
+                <p>{{ $listing['description'] }}</p>
+            </a>
+        @endforeach
+    @endif
+@endsection
