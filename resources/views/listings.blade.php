@@ -1,28 +1,46 @@
 @extends('layout')
 
 @section('content')
-    <?php echo $heading ?? 'Listings'; ?>
+@include('partials._hero')
+@include('partials._search')
 
-    <?php foreach($listings ?? [] as $listing): ?>
-    <h2><?php echo $listing['title']; ?></h2>
-    <p><?php echo $listing['description']; ?></p>
-    <?php endforeach; ?>
+<div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
-    @php
-        $test = 1;
-    @endphp
+  @if (count($listings) == 0)
+  <p>No listings found</p>
+  @else
 
-    @if (count($listings) == 0)
-        <p>No listings found</p>
-    @else
-        <h1>{{ $heading }}</h1>
-        <span>{{ $test }}</span>
+  @foreach ($listings as $listing)
+  <div class="bg-gray-50 border border-gray-200 rounded p-6">
+    <div class="flex">
+      <img class="hidden w-48 mr-6 md:block" src="{{  asset('images/no-image.png') }}" alt="" />
+      <div>
+        <h3 class="text-2xl">
+          <a href="/listings/{{ $listing->id }}">{{ $listing->title }}</a>
+        </h3>
+        <div class="text-xl font-bold mb-4">{{ $listing->company }}</div>
+        <ul class="flex">
+          <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+            <a href="#">Laravel</a>
+          </li>
+          <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+            <a href="#">API</a>
+          </li>
+          <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+            <a href="#">Backend</a>
+          </li>
+          <li class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+            <a href="#">Vue</a>
+          </li>
+        </ul>
+        <div class="text-lg mt-4">
+          <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  @endif
 
-        @foreach ($listings as $listing)
-            <a href="/listings/{{ $listing['id'] }}">
-                <h2>{{ $listing['title'] }}</h2>
-                <p>{{ $listing['description'] }}</p>
-            </a>
-        @endforeach
-    @endif
+</div>
 @endsection
