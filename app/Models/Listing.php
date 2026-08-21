@@ -10,6 +10,9 @@ class Listing extends Model
 {
   use HasFactory;
 
+  // or you can use Model::unguard(); in boot method in AppServiceProvider.php
+  protected $fillable = ['title', 'company', 'location', 'website', 'email', 'description', 'tags'];
+
   public function scopeFilter(Builder $query, array $filters)
   {
     if ($filters['tag'] ?? false) {

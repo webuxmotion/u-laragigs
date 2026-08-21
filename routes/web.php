@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ListingController::class, 'index']);
 Route::get('/listings', [ListingController::class, 'index']);
 
+// Show create form
+Route::get('/listings/create', [ListingController::class, 'create']);
+Route::post('/listings', [ListingController::class, 'store']);
+
 Route::get('/listings/{id}', [ListingController::class, 'show'])->whereNumber('id');
 
 Route::get('/hello', function () {
