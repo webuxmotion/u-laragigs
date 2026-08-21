@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,13 @@ Route::get('/listings/create', [ListingController::class, 'create']);
 Route::post('/listings', [ListingController::class, 'store']);
 
 Route::get('/listings/{id}', [ListingController::class, 'show'])->whereNumber('id');
+
+// test
+Route::get('/test', [TestController::class, 'index']);
+Route::get('/test/create', [TestController::class, 'create']);
+Route::post('/test/create', [TestController::class, 'store']);
+Route::get('/test/{id}', [TestController::class, 'single']);
+
 
 Route::get('/hello', function () {
     return response('<h1>Hello world!</h1>')
