@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Test;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class TestController extends Controller
 {
@@ -16,9 +15,9 @@ class TestController extends Controller
     ]);
   }
 
-  public function single(int $id)
+  public function show(int $id)
   {
-    return view('tests.single', [
+    return view('tests.show', [
       'test' => Test::find($id)
     ]);
   }
@@ -35,6 +34,6 @@ class TestController extends Controller
 
     Test::create($formFields);
 
-    return redirect('/test');
+    return redirect()->route('tests.index');
   }
 }

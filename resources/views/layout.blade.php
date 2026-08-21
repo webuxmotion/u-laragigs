@@ -31,7 +31,7 @@
     
     <ul class="flex space-x-6 mr-6 text-lg">
       <li>
-        <a href="/test" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Test</a>
+        <a href="{{ route('tests.index') }}" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tests</a>
       </li>
     </ul>
 
