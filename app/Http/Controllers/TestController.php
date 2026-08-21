@@ -11,6 +11,7 @@ class TestController extends Controller
   {
     return view('tests.index', [
       'tests' => Test::latest()
+        ->filter(request(['search']))
         ->get()
     ]);
   }
@@ -27,7 +28,8 @@ class TestController extends Controller
     return view('tests.create');
   }
 
-  public function store(Request $request) {
+  public function store(Request $request)
+  {
     $formFields = $request->validate([
       'title' => 'required',
     ]);
