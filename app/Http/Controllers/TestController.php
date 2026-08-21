@@ -9,18 +9,29 @@ class TestController extends Controller
 {
   public function index()
   {
-    return view('tests.index', [
-      'tests' => Test::latest()
-        ->filter(request(['search']))
-        ->get()
-    ]);
+    $search = request('search');
+
+    $tests = Test::latest()->filter(['search' => $search])->get();
+
+    if ($search) {
+      foreach ($tests as $test) {
+        $test->from_search_query = $search;
+      }
+    }
+
+    return view('tests.index', compact('tests'));
   }
 
   public function show(int $id)
   {
-    return view('tests.show', [
-      'test' => Test::find($id)
-    ]);
+    $from_search_query = request('from_search_query');
+    $test = Test::find($id);
+
+    if ($from_search_query && $test) {
+      $test->from_search_query = $from_search_query;
+    }
+
+    return view('tests.show', compact('test'));
   }
 
   public function create()
