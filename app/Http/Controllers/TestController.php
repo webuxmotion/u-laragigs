@@ -47,6 +47,6 @@ class TestController extends Controller
 
     Test::create($formFields);
 
-    return redirect()->route('tests.index');
+    return redirect()->route('tests.index')->with('message', 'Test created successfully!');
   }
 }

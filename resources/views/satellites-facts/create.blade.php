@@ -16,7 +16,7 @@
     <div class="mb-6">
       <label for="title" class="inline-block text-lg mb-2">Title</label>
       <input type="text" class="border border-gray-200 rounded p-2 w-full" name="title"
-        placeholder="Example: Some title" />
+        placeholder="Example: Some title" value="{{ old('title') }}" />
       @error('title')
       <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
       @enderror
@@ -25,7 +25,7 @@
     <div class="mb-6">
       <label for="description" class="inline-block text-lg mb-2">Description</label>
       <input type="text" class="border border-gray-200 rounded p-2 w-full" name="description"
-        placeholder="Example: Some description" />
+        placeholder="Example: Some description" value="{{ old('description') }}"/>
       @error('description')
       <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
       @enderror
