@@ -51,5 +51,7 @@ class DatabaseSeeder extends Seeder
     Listing::factory(20)->create();
 
     Test::factory(5)->create();
+
+    new SatellitesFactsSeeder()->run();
   }
 }
