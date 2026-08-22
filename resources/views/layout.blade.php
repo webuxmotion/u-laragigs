@@ -29,6 +29,9 @@
     
     <ul class="flex space-x-6 mr-6 text-lg">
       <li>
+        <a href="{{ route('satellites-facts.index') }}" class="hover:text-laravel"><i class="fa-solid fa-satellite"></i> Satellites Facts</a>
+      </li>
+      <li>
         <a href="{{ route('tests.index') }}" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Tests</a>
       </li>
     </ul>

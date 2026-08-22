@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\SatellitesFactController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ Route::post('/listings', [ListingController::class, 'store']);
 Route::get('/listings/{id}', [ListingController::class, 'show'])->whereNumber('id');
 
 Route::resource('tests', TestController::class)->names('tests');
+Route::resource('satellites-facts', SatellitesFactController::class)->names('satellites-facts');
 
 
 Route::get('/hello', function () {
